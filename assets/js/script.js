@@ -48,7 +48,11 @@ $(document).ready(function() {
         $('#A').attr('data-answer', arr[0].correct);
         $('#A').on('click', function(){
             $(this).addClass(`btn-${$(this).attr('data-answer')}`);
-            console.log($(this).attr('data-answer'));
+            if ($(this).attr('data-answer') === 'success') {
+                score++;
+            };
+            nextQuestion(); 
+            // console.log($(this).attr('data-answer'));
         });
         
         $('#B').text(arr[1].choice);
@@ -56,7 +60,11 @@ $(document).ready(function() {
         $('#B').attr('data-answer', arr[1].correct);
         $('#B').on('click', function(){
             $(this).addClass(`btn-${$(this).attr('data-answer')}`);
-            console.log($(this).attr('data-answer'));
+            if ($(this).attr('data-answer') === 'success') {
+                score++;
+            };
+            nextQuestion(); 
+            // console.log($(this).attr('data-answer'));
         });
         
         $('#C').text(arr[2].choice);
@@ -64,7 +72,11 @@ $(document).ready(function() {
         $('#C').attr('data-answer', arr[2].correct);
         $('#C').on('click', function(){
             $(this).addClass(`btn-${$(this).attr('data-answer')}`);
-            console.log($(this).attr('data-answer'));
+            if ($(this).attr('data-answer') === 'success') {
+                score++;
+            };
+            nextQuestion(); 
+            // console.log($(this).attr('data-answer'));
         });
         
         $('#D').text(arr[3].choice);
@@ -72,8 +84,17 @@ $(document).ready(function() {
         $('#D').attr('data-answer', arr[3].correct);
         $('#D').on('click', function(){
             $(this).addClass(`btn-${$(this).attr('data-answer')}`);
-            console.log($(this).attr('data-answer'));
+            if ($(this).attr('data-answer') === 'success') {
+                score++;
+            };
+            nextQuestion(); 
+            // console.log($(this).attr('data-answer'));
         });
+    };
+
+    function nextQuestion() {
+        console.log('next question');
+        console.log(`score: ${score}`);
     };
 
     
@@ -87,9 +108,9 @@ $(document).ready(function() {
 
 
         // showQuestions();
-        for (var i = 0; i < questions.length; i++) {
-            console.log(questions[i].text);
-        }
+        // for (var i = 0; i < questions.length; i++) {
+        //     console.log(questions[i].text);
+        // }
     }
     
     
