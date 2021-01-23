@@ -6,13 +6,11 @@ $(document).ready(function() {
     let score = 0;
 
     function hideStartBtn() {
-        // define visible / invisible css classes
-        // call appropriate class
+        startBtn.removeClass('visible').addClass('invisible');
     };
 
     function showStartBtn() {
-        // define visible / invisible css classes
-        // call appropriate class
+        startBtn.removeClass('invisible').addClass('visible');
     };
 
     function showQuestions() {
