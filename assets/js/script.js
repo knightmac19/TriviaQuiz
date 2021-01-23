@@ -1,9 +1,21 @@
 $(document).ready(function() {
+    
     console.log( "I'm ready!" );
+    var questionNum = $('#question-num');
+    var questionText = $('#question-text');
+    questionNum.text('1');
+    questionText.text(questions[0].text);
+    let questionIndex = 0;
 
     var counter = $('#counter');
-    var startBtn = $('#start-btn');
+    // var startBtn = $('#start-btn');
     let score = 0;
+    // hideStartBtn();
+
+    function nextQuestion(num) {
+        return num++;
+    }
+
 
     function hideStartBtn() {
         startBtn.removeClass('visible').addClass('invisible');
@@ -26,7 +38,7 @@ $(document).ready(function() {
     
 
     function initGame() {
-        hideStartBtn();
+        // hideStartBtn();
         counter.text('Time Left: 00:59');
 
         showQuestions();

@@ -4,19 +4,23 @@ const questions = [
         options: [
             {
                 choice: "0",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "3",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "6",
-                correct: true
+                correct: true,
+                class: 'correct'
             },
             {
                 choice: "1",
-                correct: false
+                correct: false,
+                class: 'wrong'
             }
         ]
     },
@@ -25,19 +29,23 @@ const questions = [
         options: [
             {
                 choice: "Colombia",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "Spain",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "Mexico",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "United States",
-                correct: true
+                correct: true,
+                class: 'correct'
             }
         ]
     },
@@ -46,19 +54,23 @@ const questions = [
         options: [
             {
                 choice: "Earth Day",
-                correct: true
+                correct: true,
+                class: 'correct'
             },
             {
                 choice: "Marijuana Day",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "Pandora Day",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "Limerick Day",
-                correct: false
+                correct: false,
+                class: 'wrong'
             }
         ]
     },
@@ -67,19 +79,23 @@ const questions = [
         options: [
             {
                 choice: "Ken Jennings",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "Pat Sajak",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "Alex Trebek",
-                correct: true
+                correct: true,
+                class: 'correct'
             },
             {
                 choice: "Vanna White",
-                correct: false
+                correct: false,
+                class: 'wrong'
             }
         ]
     },
@@ -88,19 +104,23 @@ const questions = [
         options: [
             {
                 choice: "Hot & Tangy Meat Loaf",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "HyperText Markup Language",
-                correct: true
+                correct: true,
+                class: 'correct'
             },
             {
                 choice: "Hybrid Transverse Media Language",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "How The Mandalorian Leaps",
-                correct: false
+                correct: false,
+                class: 'wrong'
             }
         ]
     },
@@ -109,19 +129,23 @@ const questions = [
         options: [
             {
                 choice: "You bring it flowers",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "You hug it",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "You log it",
-                correct: false
+                correct: false,
+                class: 'wrong'
             },
             {
                 choice: "You console it",
-                correct: true
+                correct: true,
+                class: 'correct'
             }
         ]
     }  
