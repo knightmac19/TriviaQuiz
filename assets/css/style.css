@@ -9,6 +9,10 @@
     padding-top: 30px;
   } 
 
+  .wrong, .correct {
+    width: 100%;
+  }
+
   .invisible {
     visibility: hidden;
   }
