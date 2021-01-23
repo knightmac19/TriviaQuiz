@@ -5,12 +5,14 @@ $(document).ready(function() {
     var questionText = $('#question-text');
     questionNum.text('1');
     questionText.text(questions[0].text);
+    var mainContent = $('#main-content');
     let questionIndex = 0;
 
     var counter = $('#counter');
-    // var startBtn = $('#start-btn');
+    var startBtn = $('#start-btn');
     let score = 0;
     // hideStartBtn();
+    hideQuestions();
 
     function nextQuestion(num) {
         return num++;
@@ -26,22 +28,21 @@ $(document).ready(function() {
     };
 
     function showQuestions() {
-        // define visible / invisible css classes
-        // call appropriate class
+        mainContent.removeClass('invisible').addClass('visible');
     };
 
     function hideQuestions() {
-        // define visible / invisible css classes
-        // call appropriate class
+        mainContent.removeClass('visible').addClass('invisible');
     };
 
     
 
     function initGame() {
-        // hideStartBtn();
+        hideStartBtn();
+        showQuestions();
         counter.text('Time Left: 00:59');
 
-        showQuestions();
+        // showQuestions();
         for (var i = 0; i < questions.length; i++) {
             console.log(questions[i].text);
         }
