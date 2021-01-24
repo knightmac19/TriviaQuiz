@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col text-center">
                 <h1>Trivia Quiz</h1>
-                <button id="start-btn" type="button" class="btn btn-dark">Start Quiz</button>
+                <button id="start-btn" type="button" class="btn btn-primary">Start Quiz</button>
             </div>
         </div>
     </div>
@@ -36,27 +36,32 @@
                       <h3>Question <span id="question-num"></span></h3>
                     </div>
                     <div class="card-body">
-                      <h5 id="question-text" class="card-title">Question Text Here</h5>
-                      <div class="row text-center p-2">
-                        <div class="col">
-                            <a id="A" class="btn btn-primary"></a>
+                        <h5 id="question-text" class="card-title"></h5>
+                        <div class="row text-center p-2">
+                            <div class="col">
+                                <a id="A" class="btn btn-primary"></a>
+                            </div>
+                            <div class="col">
+                                <a id="B" class="btn btn-primary"></a>
+                            </div>
                         </div>
-                        <div class="col">
-                            <a id="B" class="btn btn-primary"></a>
+                        <div class="row text-center p-2">
+                            <div class="col">
+                                <a id="C" class="btn btn-primary"></a>
+                            </div>
+                            <div class="col">
+                                <a id="D" class="btn btn-primary"></a>
+                            </div>
                         </div>
-                      </div>
-                      <div class="row text-center p-2">
-                        <div class="col">
-                            <a id="C" class="btn btn-primary"></a>
-                        </div>
-                        <div class="col">
-                            <a id="D" class="btn btn-primary"></a>
-                        </div>
-                      </div>
-                      
                     </div>
-                  </div>
-                
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col text-center">
+                                <h5>Score: <span id="score"></span></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
