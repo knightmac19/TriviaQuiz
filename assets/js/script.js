@@ -17,9 +17,18 @@ $(document).ready(function() {
     var userInitials =$('#user-initials');
     var initialsSubmit = $('#highscore-submit');
 
+    var userData = JSON.parse(localStorage.getItem('userData'));
+
     initialsSubmit.click(function(e) {
+        let data = {
+            initials: userInitials.val(),
+            score: score
+        };
+        userData.push(data);
         e.preventDefault();
         console.log(userInitials.val());
+        localStorage.setItem('userData', JSON.stringify(userData))
+
     });
     
     let questionIndex = 0;
@@ -67,11 +76,6 @@ $(document).ready(function() {
     
     // hideStartBtn();
     hideQuestions();
-
-    function nextQuestion(index) {
-        
-    }
-
 
     function hideStartBtn() {
         startBtn.removeClass('visible').addClass('invisible');
@@ -138,7 +142,7 @@ $(document).ready(function() {
         } else {
             console.log('nextQuestion index: ' + questionIndex);
             questionText.text(questions[questionIndex].text);
-            questionNum.text(`${questionIndex + 1} / 6`);
+            questionNum.text(`Question ${questionIndex + 1} / 6`);
             empowerBtns(questions[questionIndex].options);
         };
         

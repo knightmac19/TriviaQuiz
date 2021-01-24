@@ -1,6 +1,6 @@
 const questions = [
     {
-        text: "How many US state capitols are west of Los Angeles?",
+        text: "How many US state capitals are west of Los Angeles?",
         options: [
             {
                 choice: "0",
