@@ -13,6 +13,15 @@ $(document).ready(function() {
     var thirdBtn = $('#C');
     var fourthBtn = $('#D');
 
+    // var inputGroup = $('.input-group');
+    var userInitials =$('#user-initials');
+    var initialsSubmit = $('#highscore-submit');
+
+    initialsSubmit.click(function(e) {
+        e.preventDefault();
+        console.log(userInitials.val());
+    });
+    
     let questionIndex = 0;
     let score = 0;
 
@@ -76,13 +85,18 @@ $(document).ready(function() {
         console.log('showQuestions index: ' + questionIndex);
         mainContent.removeClass('invisible').addClass('visible');
         questionText.text(questions[questionIndex].text);
-        questionNum.text(`${questionIndex + 1} / 6`);
+        questionNum.text(`Question ${questionIndex + 1} / 6`);
         empowerBtns(questions[questionIndex].options);
     };
 
     function hideQuestions() {
         mainContent.removeClass('visible').addClass('invisible');
     };
+
+    function hideButtons() {
+        $('.quiz-btn').addClass('invisible');
+        scoreContent.addClass('invisible');
+    }
 
 
     function empowerBtns(arr) {
@@ -112,22 +126,26 @@ $(document).ready(function() {
     };
 
     function nextQuestion() {
-        scoreContent.text(score);
-        
-        if (questionIndex > 6) {
+        scoreContent.text(`Score: ${score}`);
+
+        if (questionIndex > 5) {
+            $('.input-group').removeClass('invisible').addClass('visible');
+            hideButtons();
+            questionNum.text('');
+            questionNum.text('Game Over!');
+            questionText.addClass('text-center').text(`You scored ${score} / 6!`);
 
         } else {
             console.log('nextQuestion index: ' + questionIndex);
             questionText.text(questions[questionIndex].text);
-            questionNum.text(`${questionIndex + 1} / 6`)
+            questionNum.text(`${questionIndex + 1} / 6`);
             empowerBtns(questions[questionIndex].options);
         };
         
     };
 
     function initGame() {
-        // questionIndex++;
-        // questionNum.text(`${questionIndex + 1} / 6`);
+
         hideStartBtn();
         showQuestions();
         counter.text('Time Left: 00:59');

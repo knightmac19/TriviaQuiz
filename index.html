@@ -33,11 +33,19 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header text-center">
-                      <h3>Question <span id="question-num"></span></h3>
+                      <h3 id="question-num"></h3>
                     </div>
                     <div class="card-body">
-                        <h5 id="question-text" class="card-title"></h5>
-                        <div class="row text-center p-2">
+                        <h5 id="question-text" class="card-title mt-2"></h5>
+
+                        <div class="input-group invisible">
+                            <input id='user-initials' type="text" class="form-control" placeholder="Add your initials!" aria-label="User's initials" aria-describedby="user initials">
+                            <div class="input-group-append">
+                                <button id='highscore-submit' class="btn btn-secondary" type="button">Submit</button>
+                            </div>
+                        </div>
+                        
+                        <div class="row text-center p-2 quiz-btn">
                             <div class="col">
                                 <a id="A" class="btn btn-primary"></a>
                             </div>
@@ -45,7 +53,7 @@
                                 <a id="B" class="btn btn-primary"></a>
                             </div>
                         </div>
-                        <div class="row text-center p-2">
+                        <div class="row text-center p-2 quiz-btn">
                             <div class="col">
                                 <a id="C" class="btn btn-primary"></a>
                             </div>
@@ -57,7 +65,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col text-center">
-                                <h5>Score: <span id="score"></span></h5>
+                                <h5 id="score"></h5>
                             </div>
                         </div>
                     </div>
