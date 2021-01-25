@@ -20,8 +20,19 @@ $(document).ready(function() {
         return 0;
     };
 
-    var sortedArray = localData.sort(sortByScore);
+    function sortByTime(a, b) {
+        if (a.timeLeft < b.timeLeft) {
+            return 1;
+        };
+        if (a.timeLeft > b.timeLeft) {
+            return -1;
+        };
+        return 0;
+    };
 
+    var sortedByTime = localData.sort(sortByTime);
+
+    var sortedByScore = sortedByTime.sort(sortByScore);
 
     function render(arr) {
         for (var i = 0; i < arr.length; i++) {
@@ -30,14 +41,15 @@ $(document).ready(function() {
                     <th scope='row'>${i + 1}</th>
                     <td>${arr[i].initials}</td>
                     <td>${arr[i].score}</td>
-                    <td>N/A</td>
+                    <td>${arr[i].timeLeft}</td>
+                    
                 </tr>
             `
             table.append(tempRow);
         }
     };
 
-    render(sortedArray);
+    render(sortedByScore);
 
 
 });
