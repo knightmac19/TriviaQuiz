@@ -2,8 +2,8 @@
     // set timer to start when game is initiated
     // call game end when timer stops OR user answers all questions
     // use .hide() & .show() instead of visible classes
-    // set window location to highscores page on initials submit
     // render table of highscores from local storage on highscores page
+    // sort highscores page by highest to lowest score
 
 $(document).ready(function() {
     $('.game-end').hide();
@@ -23,7 +23,7 @@ $(document).ready(function() {
 
     var userInitials =$('#user-initials');
     var initialsSubmit = $('#highscore-submit');
-    var restart = $('#restart');
+    
 
     if (!localStorage.getItem('userData')) {
         var userData = [];
@@ -36,11 +36,6 @@ $(document).ready(function() {
     let correct = false;
     let timer = 1;
 
-    restart.click(function() {
-        $('.game-end').hide();
-        initGame();
-    });
-
     initialsSubmit.click(function(e) {
         let data = {
             initials: userInitials.val(),
@@ -49,10 +44,7 @@ $(document).ready(function() {
         userData.push(data);
         e.preventDefault();
         localStorage.setItem('userData', JSON.stringify(userData));
-        $('.game-end').hide();
-        counter.text('');
-        mainContent.removeClass('visible').addClass('invisible');
-        startBtn.removeClass('invisible').addClass('visible');
+        window.location.replace('./highscore.html');
 
     });
 
