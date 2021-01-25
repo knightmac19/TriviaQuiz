@@ -1,5 +1,4 @@
 // todo's:
-    // deduct time when a user answers wrong
     // use async await for sorting functions
 
 $(document).ready(function() {
@@ -31,10 +30,13 @@ $(document).ready(function() {
     let questionIndex = 0;
     let score = 0;
     let correct = false;
-    let timer = 20;
+    let timer = 60;
     var countdown;
 
     initialsSubmit.click(function(e) {
+        if (timer <= 0) {
+            timer=0
+        };
         let data = {
             initials: userInitials.val(),
             score: score,
@@ -52,6 +54,7 @@ $(document).ready(function() {
             score++;
             correct = true; 
         } else {
+            timer -= 10;
             correct = false;
         };
         giveFeedback();
@@ -62,6 +65,7 @@ $(document).ready(function() {
             score++;
             correct = true; 
         } else {
+            timer -= 10;
             correct = false;
         };
         giveFeedback();
@@ -72,6 +76,7 @@ $(document).ready(function() {
             score++;
             correct = true;
         } else {
+            timer -= 10;
             correct = false;
         };
         giveFeedback();
@@ -82,16 +87,13 @@ $(document).ready(function() {
             score++;
             correct = true;
         } else {
+            timer -= 10;
             correct = false;
         };
         giveFeedback();
     });
     
     hideQuestions();
-
-    // function runTimer() {
-
-    // };
 
     function hideStartBtn() {
         startBtn.removeClass('invisible visible').addClass('invisible');
@@ -166,7 +168,7 @@ $(document).ready(function() {
 
     function endGame() {
         clearInterval(countdown);
-        clearTimeout(endGame);
+        // clearTimeout(endGame);
         console.log("time left" + timer);
         counter.hide();
         $('.game-end').show();
@@ -179,7 +181,7 @@ $(document).ready(function() {
     function nextQuestion() {
         scoreContent.text(`Score: ${score}`);
 
-        if (questionIndex > 5) {
+        if (questionIndex > 5 || timer <=0) {
             endGame();
         } else {
             questionText.text(questions[questionIndex].text);
@@ -190,9 +192,12 @@ $(document).ready(function() {
     };
 
     function decrementTimer() {
-        
-        timer--;
-        counter.text(`Time Remaining: ${timer}`);
+        if (timer > 1) {
+            timer--;
+            counter.text(`Time Remaining: ${timer}`);
+        } else {
+            endGame();
+        }
     };
 
     function initGame() {
@@ -211,7 +216,7 @@ $(document).ready(function() {
     
     startBtn.click( function() {
         initGame();
-        setTimeout(endGame, 20000);
+        // setTimeout(endGame, 45000);
         
     });
 
