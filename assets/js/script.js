@@ -144,19 +144,19 @@ $(document).ready(function() {
     function empowerBtns(arr) {
 
         firstBtn.text(arr[0].choice);
-        firstBtn.addClass('btn btn-primary game-btn text-white');
+        firstBtn.addClass('btn btn-primary game-btn text-white mb-1');
         firstBtn.attr('data-answer', arr[0].correct);
         
         secondBtn.text(arr[1].choice);
-        secondBtn.addClass('btn btn-primary game-btn text-white');
+        secondBtn.addClass('btn btn-primary game-btn text-white mb-1');
         secondBtn.attr('data-answer', arr[1].correct);
         
         thirdBtn.text(arr[2].choice);
-        thirdBtn.addClass('btn btn-primary game-btn text-white');
+        thirdBtn.addClass('btn btn-primary game-btn text-white mb-1');
         thirdBtn.attr('data-answer', arr[2].correct);
         
         fourthBtn.text(arr[3].choice);
-        fourthBtn.addClass('btn btn-primary game-btn text-white');
+        fourthBtn.addClass('btn btn-primary game-btn text-white mb-1');
         fourthBtn.attr('data-answer', arr[3].correct);
         
     };
@@ -168,9 +168,6 @@ $(document).ready(function() {
         questionNum.text('Game Over!');
         questionText.addClass('text-center').text(`You scored ${score} / 6!`);
     }
-
-    // to do: 
-        // hide the buttons when the game is ended, show the buttons when the game is started
 
     function nextQuestion() {
         scoreContent.text(`Score: ${score}`);
