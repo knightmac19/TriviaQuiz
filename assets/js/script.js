@@ -1,3 +1,10 @@
+// todo's:
+    // set timer to start when game is initiated
+    // call game end when timer stops OR user answers all questions
+    // use .hide() & .show() instead of visible classes
+    // set window location to highscores page on initials submit
+    // render table of highscores from local storage on highscores page
+
 $(document).ready(function() {
     $('.game-end').hide();
     
@@ -18,15 +25,18 @@ $(document).ready(function() {
     var initialsSubmit = $('#highscore-submit');
     var restart = $('#restart');
 
-    var userData = JSON.parse(localStorage.getItem('userData'));
+    if (!localStorage.getItem('userData')) {
+        var userData = [];
+    } else {
+        var userData = JSON.parse(localStorage.getItem('userData'));
+    };
     
     let questionIndex = 0;
     let score = 0;
     let correct = false;
     let timer = 1;
 
-    restart.click(function(e) {
-        // e.preventDefault();
+    restart.click(function() {
         $('.game-end').hide();
         initGame();
     });
@@ -38,7 +48,11 @@ $(document).ready(function() {
         };
         userData.push(data);
         e.preventDefault();
-        localStorage.setItem('userData', JSON.stringify(userData))
+        localStorage.setItem('userData', JSON.stringify(userData));
+        $('.game-end').hide();
+        counter.text('');
+        mainContent.removeClass('visible').addClass('invisible');
+        startBtn.removeClass('invisible').addClass('visible');
 
     });
 
@@ -94,7 +108,7 @@ $(document).ready(function() {
 
     function giveFeedback() {
         if (correct) {
-            console.log('Correct!');
+
             feedback.text('Correct!')
                 .removeClass('invisible btn-success btn-danger')
                 .addClass('btn-success')
@@ -104,7 +118,7 @@ $(document).ready(function() {
                     nextQuestion();
                 }); 
         } else {
-            console.log('Incorrect!');
+
             feedback.text('Incorrect!')
                 .removeClass('invisible btn-success btn-danger')
                 .addClass('btn-danger')
@@ -117,10 +131,9 @@ $(document).ready(function() {
     }
 
     function showQuestions() {
-        console.log('showing questions')
-        console.log(`questionIndex: ${questionIndex} score: ${score}`)
 
         mainContent.removeClass('invisible').addClass('visible');
+        $('.quiz-btn').removeClass('invisible').addClass('visible');
         questionText.text(questions[questionIndex].text);
         questionNum.text(`Question ${questionIndex + 1} / 6`);
         empowerBtns(questions[questionIndex].options);
@@ -181,10 +194,9 @@ $(document).ready(function() {
     };
 
     function initGame() {
-        console.log('init game')
+        
         questionIndex = 0;
         score = 0;
-        console.log(`questionIndex: ${questionIndex} score: ${score}`)
 
         hideStartBtn();
         showQuestions();
