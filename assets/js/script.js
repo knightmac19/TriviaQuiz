@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('.game-end').hide();
     
     var questionNum = $('#question-num');
     var questionText = $('#question-text');
@@ -15,8 +16,20 @@ $(document).ready(function() {
 
     var userInitials =$('#user-initials');
     var initialsSubmit = $('#highscore-submit');
+    var restart = $('#restart');
 
     var userData = JSON.parse(localStorage.getItem('userData'));
+    
+    let questionIndex = 0;
+    let score = 0;
+    let correct = false;
+    let timer = 1;
+
+    restart.click(function(e) {
+        // e.preventDefault();
+        $('.game-end').hide();
+        initGame();
+    });
 
     initialsSubmit.click(function(e) {
         let data = {
@@ -28,10 +41,6 @@ $(document).ready(function() {
         localStorage.setItem('userData', JSON.stringify(userData))
 
     });
-    
-    let questionIndex = 0;
-    let score = 0;
-    let correct = false;
 
     firstBtn.click( function(){
         if ($(this).attr('data-answer') === 'true') {
@@ -76,7 +85,7 @@ $(document).ready(function() {
     hideQuestions();
 
     function hideStartBtn() {
-        startBtn.removeClass('visible').addClass('invisible');
+        startBtn.removeClass('invisible visible').addClass('invisible');
     };
 
     function showStartBtn() {
@@ -108,6 +117,9 @@ $(document).ready(function() {
     }
 
     function showQuestions() {
+        console.log('showing questions')
+        console.log(`questionIndex: ${questionIndex} score: ${score}`)
+
         mainContent.removeClass('invisible').addClass('visible');
         questionText.text(questions[questionIndex].text);
         questionNum.text(`Question ${questionIndex + 1} / 6`);
@@ -125,11 +137,6 @@ $(document).ready(function() {
 
 
     function empowerBtns(arr) {
-
-        firstBtn.removeClass(arr[0].class);
-        secondBtn.removeClass(arr[1].class);
-        thirdBtn.removeClass(arr[2].class);
-        fourthBtn.removeClass(arr[3].class);
 
         firstBtn.text(arr[0].choice);
         firstBtn.addClass('btn btn-primary game-btn text-white');
@@ -149,16 +156,22 @@ $(document).ready(function() {
         
     };
 
+    function endGame() {
+        $('.game-end').show();
+        hideButtons();
+        questionNum.text('');
+        questionNum.text('Game Over!');
+        questionText.addClass('text-center').text(`You scored ${score} / 6!`);
+    }
+
+    // to do: 
+        // hide the buttons when the game is ended, show the buttons when the game is started
+
     function nextQuestion() {
         scoreContent.text(`Score: ${score}`);
 
-        if (questionIndex > 5) {
-            $('.input-group').removeClass('invisible').addClass('visible');
-            hideButtons();
-            questionNum.text('');
-            questionNum.text('Game Over!');
-            questionText.addClass('text-center').text(`You scored ${score} / 6!`);
-
+        if (questionIndex > 5 || timer === 0) {
+            endGame();
         } else {
             questionText.text(questions[questionIndex].text);
             questionNum.text(`Question ${questionIndex + 1} / 6`);
@@ -168,8 +181,10 @@ $(document).ready(function() {
     };
 
     function initGame() {
+        console.log('init game')
         questionIndex = 0;
         score = 0;
+        console.log(`questionIndex: ${questionIndex} score: ${score}`)
 
         hideStartBtn();
         showQuestions();
