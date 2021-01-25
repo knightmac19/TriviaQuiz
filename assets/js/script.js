@@ -34,12 +34,14 @@ $(document).ready(function() {
     let questionIndex = 0;
     let score = 0;
     let correct = false;
-    let timer = 1;
+    let timer = 15;
+    var countdown;
 
     initialsSubmit.click(function(e) {
         let data = {
             initials: userInitials.val(),
-            score: score
+            score: score,
+            timeLeft: timer
         };
         userData.push(data);
         e.preventDefault();
@@ -89,6 +91,10 @@ $(document).ready(function() {
     });
     
     hideQuestions();
+
+    // function runTimer() {
+
+    // };
 
     function hideStartBtn() {
         startBtn.removeClass('invisible visible').addClass('invisible');
@@ -162,6 +168,10 @@ $(document).ready(function() {
     };
 
     function endGame() {
+        clearInterval(countdown);
+        clearTimeout(endGame);
+        console.log("time left" + timer);
+        counter.hide();
         $('.game-end').show();
         hideButtons();
         questionNum.text('');
@@ -172,7 +182,7 @@ $(document).ready(function() {
     function nextQuestion() {
         scoreContent.text(`Score: ${score}`);
 
-        if (questionIndex > 5 || timer === 0) {
+        if (questionIndex > 5) {
             endGame();
         } else {
             questionText.text(questions[questionIndex].text);
@@ -182,20 +192,35 @@ $(document).ready(function() {
         
     };
 
+    function decrementTimer() {
+        
+        timer--;
+        counter.text(`Time Remaining: ${timer}`);
+    };
+
     function initGame() {
         
+        countdown = setInterval(decrementTimer, 1000);
+        
+
         questionIndex = 0;
         score = 0;
 
         hideStartBtn();
         showQuestions();
-        counter.text('Time Left: 00:59');
+        counter.text(`Time Remaining: ${timer}`);
 
     }
     
     startBtn.click( function() {
         initGame();
+        setTimeout(endGame, 15000);
+        
     });
+
+    // function finished() {
+    //     console.log('finished');
+    // }
 
 
 
