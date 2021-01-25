@@ -1,9 +1,6 @@
 // todo's:
-    // set timer to start when game is initiated
-    // call game end when timer stops OR user answers all questions
-    // use .hide() & .show() instead of visible classes
-    // render table of highscores from local storage on highscores page
-    // sort highscores page by highest to lowest score
+    // deduct time when a user answers wrong
+    // use async await for sorting functions
 
 $(document).ready(function() {
     $('.game-end').hide();
@@ -34,7 +31,7 @@ $(document).ready(function() {
     let questionIndex = 0;
     let score = 0;
     let correct = false;
-    let timer = 15;
+    let timer = 20;
     var countdown;
 
     initialsSubmit.click(function(e) {
@@ -214,7 +211,7 @@ $(document).ready(function() {
     
     startBtn.click( function() {
         initGame();
-        setTimeout(endGame, 15000);
+        setTimeout(endGame, 20000);
         
     });
 
