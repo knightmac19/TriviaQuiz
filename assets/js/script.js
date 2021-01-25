@@ -1,19 +1,18 @@
 $(document).ready(function() {
     
-    console.log( "I'm ready!" );
     var questionNum = $('#question-num');
     var questionText = $('#question-text');
     var counter = $('#counter');
     var startBtn = $('#start-btn');
     var mainContent = $('#main-content');
     var scoreContent = $('#score');
+    var feedback = $('#feedback');
 
     var firstBtn = $('#A');
     var secondBtn = $('#B');
     var thirdBtn = $('#C');
     var fourthBtn = $('#D');
 
-    // var inputGroup = $('.input-group');
     var userInitials =$('#user-initials');
     var initialsSubmit = $('#highscore-submit');
 
@@ -26,55 +25,54 @@ $(document).ready(function() {
         };
         userData.push(data);
         e.preventDefault();
-        console.log(userInitials.val());
         localStorage.setItem('userData', JSON.stringify(userData))
 
     });
     
     let questionIndex = 0;
     let score = 0;
+    let correct = false;
 
     firstBtn.click( function(){
-        // $(this).addClass(`btn-${$(this).attr('data-answer')}`);
-        if ($(this).attr('data-answer') === 'success') {
+        if ($(this).attr('data-answer') === 'true') {
             score++;
+            correct = true; 
+        } else {
+            correct = false;
         };
-        questionIndex++;
-        nextQuestion(); 
-        // console.log($(this).attr('data-answer'));
+        giveFeedback();
     });
 
     secondBtn.click( function(){
-        // $(this).addClass(`btn-${$(this).attr('data-answer')}`);
-        if ($(this).attr('data-answer') === 'success') {
+        if ($(this).attr('data-answer') === 'true') {
             score++;
+            correct = true; 
+        } else {
+            correct = false;
         };
-        questionIndex++;
-        nextQuestion(); 
-        // console.log($(this).attr('data-answer'));
+        giveFeedback();
     });
 
     thirdBtn.click( function(){
-        // $(this).addClass(`btn-${$(this).attr('data-answer')}`);
-        if ($(this).attr('data-answer') === 'success') {
+        if ($(this).attr('data-answer') === 'true') {
             score++;
+            correct = true;
+        } else {
+            correct = false;
         };
-        questionIndex++;
-        nextQuestion(); 
-        // console.log($(this).attr('data-answer'));
+        giveFeedback();
     });
 
     fourthBtn.click( function(){
-        // $(this).addClass(`btn-${$(this).attr('data-answer')}`);
-        if ($(this).attr('data-answer') === 'success') {
+        if ($(this).attr('data-answer') === 'true') {
             score++;
+            correct = true;
+        } else {
+            correct = false;
         };
-        questionIndex++;
-        nextQuestion(); 
-        // console.log($(this).attr('data-answer'));
+        giveFeedback();
     });
     
-    // hideStartBtn();
     hideQuestions();
 
     function hideStartBtn() {
@@ -85,8 +83,31 @@ $(document).ready(function() {
         startBtn.removeClass('invisible').addClass('visible');
     };
 
+    function giveFeedback() {
+        if (correct) {
+            console.log('Correct!');
+            feedback.text('Correct!')
+                .removeClass('invisible btn-success btn-danger')
+                .addClass('btn-success')
+                .show()
+                .hide(1000, function() {
+                    questionIndex++;
+                    nextQuestion();
+                }); 
+        } else {
+            console.log('Incorrect!');
+            feedback.text('Incorrect!')
+                .removeClass('invisible btn-success btn-danger')
+                .addClass('btn-danger')
+                .show()
+                .hide(1000, function() {
+                    questionIndex++;
+                    nextQuestion();
+                });
+        };
+    }
+
     function showQuestions() {
-        console.log('showQuestions index: ' + questionIndex);
         mainContent.removeClass('invisible').addClass('visible');
         questionText.text(questions[questionIndex].text);
         questionNum.text(`Question ${questionIndex + 1} / 6`);
@@ -111,22 +132,21 @@ $(document).ready(function() {
         fourthBtn.removeClass(arr[3].class);
 
         firstBtn.text(arr[0].choice);
-        firstBtn.addClass(`${arr[0].class} btn btn-primary text-white`);
+        firstBtn.addClass('btn btn-primary game-btn text-white');
         firstBtn.attr('data-answer', arr[0].correct);
         
         secondBtn.text(arr[1].choice);
-        secondBtn.addClass(`${arr[1].class} btn btn-primary text-white`);
+        secondBtn.addClass('btn btn-primary game-btn text-white');
         secondBtn.attr('data-answer', arr[1].correct);
         
         thirdBtn.text(arr[2].choice);
-        thirdBtn.addClass(`${arr[2].class} btn btn-primary text-white`);
+        thirdBtn.addClass('btn btn-primary game-btn text-white');
         thirdBtn.attr('data-answer', arr[2].correct);
         
         fourthBtn.text(arr[3].choice);
-        fourthBtn.addClass(`${arr[3].class} btn btn-primary text-white`);
+        fourthBtn.addClass('btn btn-primary game-btn text-white');
         fourthBtn.attr('data-answer', arr[3].correct);
         
-        console.log('buttons set!');
     };
 
     function nextQuestion() {
@@ -140,7 +160,6 @@ $(document).ready(function() {
             questionText.addClass('text-center').text(`You scored ${score} / 6!`);
 
         } else {
-            console.log('nextQuestion index: ' + questionIndex);
             questionText.text(questions[questionIndex].text);
             questionNum.text(`Question ${questionIndex + 1} / 6`);
             empowerBtns(questions[questionIndex].options);
@@ -149,27 +168,17 @@ $(document).ready(function() {
     };
 
     function initGame() {
+        questionIndex = 0;
+        score = 0;
 
         hideStartBtn();
         showQuestions();
         counter.text('Time Left: 00:59');
 
-
-        // showQuestions();
-        // for (var i = 0; i < questions.length; i++) {
-        //     console.log(questions[i].text);
-        // }
     }
     
-    
-
-
-
-
-
     startBtn.click( function() {
         initGame();
-        console.log('start clicked')
     });
 
 

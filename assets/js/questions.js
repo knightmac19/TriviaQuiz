@@ -4,23 +4,19 @@ const questions = [
         options: [
             {
                 choice: "0",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "3",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "6",
-                correct: 'success',
-                class: 'correct'
+                correct: true
             },
             {
                 choice: "1",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             }
         ]
     },
@@ -29,23 +25,19 @@ const questions = [
         options: [
             {
                 choice: "Colombia",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "Spain",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "Mexico",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "United States",
-                correct: 'success',
-                class: 'correct'
+                correct: true
             }
         ]
     },
@@ -54,23 +46,19 @@ const questions = [
         options: [
             {
                 choice: "Earth Day",
-                correct: 'success',
-                class: 'correct'
+                correct: true
             },
             {
                 choice: "Marijuana Day",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "Pandora Day",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "Limerick Day",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             }
         ]
     },
@@ -79,23 +67,19 @@ const questions = [
         options: [
             {
                 choice: "Ken Jennings",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "Pat Sajak",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "Alex Trebek",
-                correct: 'success',
-                class: 'correct'
+                correct: true
             },
             {
                 choice: "Vanna White",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             }
         ]
     },
@@ -104,23 +88,19 @@ const questions = [
         options: [
             {
                 choice: "Hot & Tangy Meat Loaf",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "HyperText Markup Language",
-                correct: 'success',
-                class: 'correct'
+                correct: true
             },
             {
                 choice: "Hybrid Transverse Media Language",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "How The Mandalorian Leaps",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             }
         ]
     },
@@ -129,23 +109,19 @@ const questions = [
         options: [
             {
                 choice: "You bring it flowers",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "You hug it",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "You log it",
-                correct: 'danger',
-                class: 'wrong'
+                correct: false
             },
             {
                 choice: "You console it",
-                correct: 'success',
-                class: 'correct'
+                correct: true
             }
         ]
     }  
