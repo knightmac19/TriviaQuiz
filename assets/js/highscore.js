@@ -1,5 +1,6 @@
 $(document).ready(function() {
     console.log('highscore ready!');
+    var table = $('.initials-table');
 
     if (!localStorage.getItem('userData')) {
         var localData = [];
@@ -7,30 +8,36 @@ $(document).ready(function() {
         var localData = JSON.parse(localStorage.getItem('userData'));
     };
 
-    var table = $('.initials-table');
+    // console.log(localData);
 
-    function sortByScore(arr) {
-        return arr;
+    function sortByScore(a, b) {
+        if (a.score < b.score) {
+            return 1;
+        };
+        if (a.score > b.score) {
+            return -1;
+        };
+        return 0;
     };
 
-    function sortByTime(arr) {
-        sortByScore(arr);
-        // then sort by time
-        return arr;
-    };
+    var sortedArray = localData.sort(sortByScore);
 
-    var sorted = sortByTime(localData);
 
     function render(arr) {
         for (var i = 0; i < arr.length; i++) {
-            // create a row with user's info 
-            // append that row to table
+            let tempRow = `
+                <tr>
+                    <th scope='row'>${i + 1}</th>
+                    <td>${arr[i].initials}</td>
+                    <td>${arr[i].score}</td>
+                    <td>N/A</td>
+                </tr>
+            `
+            table.append(tempRow);
         }
     };
 
-    // finally, render sorted to page
-    render(sorted);
-
+    render(sortedArray);
 
 
 });
