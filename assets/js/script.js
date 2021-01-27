@@ -215,26 +215,7 @@ $(document).ready(function() {
     }
     
     startBtn.click( function() {
-        initGame();
-        // setTimeout(endGame, 45000);
-        
+        initGame();        
     });
-
-    // function finished() {
-    //     console.log('finished');
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     console.log('highscore ready!');
     var table = $('.initials-table');
-
+    
     if (!localStorage.getItem('userData')) {
         var localData = [];
     } else {
