@@ -15,6 +15,7 @@ Vanilla JavaScript & jQuery trivia quiz with countdown timer.
 ## <a name="description"></a> Description 
 [Contents](#contents)  
 Trivia quiz comprised of six questions, decrementing timer, correct / incorrect feedback, & leaderboard tracking. If a user answers a question incorrectly, 10 seconds will be decremented from the remaining time. Scores are calculated first by the number of correct answers, then by the amount of time remaining at end of game.  
+
 The game is powered by an array of objects found in [questions.js](https://github.com/knightmac19/TriviaQuiz/blob/main/assets/js/questions.js). Each index is an object containing question text, button text, and a key tracking the correct option. The [empowerBtns()](https://github.com/knightmac19/TriviaQuiz/blob/main/assets/js/script.js) function passes the necessary values to the four statically-coded buttons each time the application loops to the next question.
 
 ![empowerBtns() function](https://github.com/knightmac19/TriviaQuiz/blob/main/assets/img/empowerBtns_function.png)
@@ -23,6 +24,7 @@ The game is powered by an array of objects found in [questions.js](https://githu
 [Contents](#contents)  
 Upon page load, the app displays a header, link to Highscores page, and 'Start Quiz' button. After starting the quiz a timer with a preset of 60 seconds begins decrementing one second on the second.  
 Users are displayed a series of questions, each with four options. Depending on the user's choice a 1-second animation will run giving in-game feedback.  
+
 The game ends when the timer reaches 0 or when the user answers the final question, whichever happens first.  
 The content box hosting the questions will display an input box for user initials / name. On submit, the window will reload with the Highscores page. User initials, score, and remaining time are retrieved from local storage, sorted by score and time, and rendered as a leaderboard table. 
 
