@@ -23,9 +23,9 @@ The game is powered by an array of objects found in [questions.js](https://githu
 ## <a name="usage"></a> Usage
 [Contents](#contents)  
 Upon page load, the app displays a header, link to Highscores page, and 'Start Quiz' button. After starting the quiz a timer with a preset of 60 seconds begins decrementing one second on the second.  
-Users are displayed a series of questions, each with four options. Depending on the user's choice a 1-second animation will run giving in-game feedback.  
 
-The game ends when the timer reaches 0 or when the user answers the final question, whichever happens first.  
+Users are displayed a series of questions, each with four options. Depending on the user's choice a 1-second animation will run giving in-game feedback. The game ends when the timer reaches 0 or when the user answers the final question, whichever happens first.  
+
 The content box hosting the questions will display an input box for user initials / name. On submit, the window will reload with the Highscores page. User initials, score, and remaining time are retrieved from local storage, sorted by score and time, and rendered as a leaderboard table. 
 
 ## <a name="screenshots"></a> Screenshots
